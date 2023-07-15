@@ -116,9 +116,14 @@ class _HomePageState extends State<HomePage> {
     orientation=MediaQuery.of(context).orientation;
     return   Scaffold(
         appBar: AppBar(
-          backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-          title: Text(_title,style:const  TextStyle(fontWeight: FontWeight.w500),),
+          backgroundColor: Colors.teal,
+          title: Text(_title),
           centerTitle: true,
+          titleTextStyle: const TextStyle(
+            color: Colors.white,
+            fontSize: 23.0,
+            fontWeight: FontWeight.w400
+          ),
         ),
         body:body(),
     );

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:rss/widgets/convertisseur_date.dart';
 import 'package:rss/widgets/custom_text.dart';
+import 'package:rss/widgets/open_feed.dart';
 import 'package:webfeed/webfeed.dart';
 
 class DetailsPage extends StatelessWidget{
@@ -19,7 +20,7 @@ class DetailsPage extends StatelessWidget{
       body:  SingleChildScrollView(
         child: Column(
           children: [
-            padding(value: 50.0),
+            padding(value: 25.0),
             Column(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
@@ -64,11 +65,31 @@ class DetailsPage extends StatelessWidget{
                       ),
                     ),
                 ),
-                padding(value: 50.0),
                 Container(
                   margin: const EdgeInsets.only(left: 10.0, right: 10.0),
                   child: customText(item.description.toString(),maxLine: 500000,textAlign: TextAlign.center),
-                )
+                ),
+                Column(
+                  children: [
+
+                    FloatingActionButton(
+                      splashColor: Colors.tealAccent,
+                        onPressed:  ()=> openFeed(item.link.toString()),
+                      elevation: 12.0,
+                      shape: const RoundedRectangleBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(50.0))
+                      ),
+                      backgroundColor: Colors.teal,
+                      child: const Icon(Icons.add,color: Colors.white,size: 40.0,),
+                    ),
+                    padding(bottom: 5.0,value: 5.0),
+                    customText("Cliquez sur ce bouton pour lire pour lire l'article complet"
+                    ,fontweight: FontWeight.normal,
+                      fontSise: 16.8,
+                      textAlign: TextAlign.center
+                    ),
+                  ],
+                ),
               ],
             ),
           ],
@@ -76,7 +97,7 @@ class DetailsPage extends StatelessWidget{
       ),
     );
   }
-  Padding padding({value=20.0}){
-    return Padding(padding: EdgeInsets.only(top: value));
+  Padding padding({value=20.0,bottom=0.0}){
+    return Padding(padding: EdgeInsets.only(top: value,bottom: bottom));
   }
 }
